@@ -15,6 +15,7 @@ def cli():
 @click.argument('pizza', nargs=1)
 def order(pizza: str, delivery: bool):
     """Готовит и доставляет пиццу"""
+    
     pizza_dict = dict(get_menu())
     pizza_names = pizza_dict.keys()
     if pizza not in pizza_names:
@@ -30,6 +31,7 @@ def order(pizza: str, delivery: bool):
 def get_menu():
     """Возвращает список всех имеющихся видов пиццы
     в виде кортежа (название_пиццы, тип_класса)"""
+    
     pizzas = [
         (cls_name.lower(), cls_obj) for cls_name, cls_obj
         in inspect.getmembers(pizza_menu)
